@@ -1,40 +1,55 @@
-# Stack Implementation Using `LifoQueue` (Max Size 7) 🔄
+# # Stack-Stack Reversal Program 🔁
 
-This Python program demonstrates a stack implemented using the `LifoQueue` class from the `queue` module. It allows up to 7 elements, checks if the stack is full, and then prints the elements in reverse (LIFO) order.
+This Python program demonstrates how to reverse the values in a stack using basic stack operations like push and pop.
 
 ## 🎯 Aim
 
-To create a Python program that:
-- Implements a stack using `LifoQueue` with a maximum size of 7
-- Adds user-inputted values to the stack
-- Checks whether the stack is full
-- Prints the stack elements in reverse order (LIFO)
+To write a Python program that reverses the values in a stack using standard stack operations.
 
 ## 📋 Algorithm
 
-1. Import the `LifoQueue` class from the `queue` module.
-2. Create a stack with a maximum size of 7.
-3. Read the number of elements (`n`) to be added to the stack.
-4. Loop `n` times:
-   - Read a value from the user.
-   - Use `put()` to push it onto the stack if it's not full.
-5. Use `full()` to check if the stack is full and print the result.
-6. Use `get()` repeatedly to pop and print elements in reverse order.
+1. Create an empty stack.
+2. Read an integer `n` from the user (number of elements to push).
+3. Loop `n` times:
+   - Read an integer from the user.
+   - Push it onto the stack.
+4. Create an empty list called `reverse`.
+5. While the stack is not empty:
+   - Pop the top element.
+   - Append it to `reverse`.
+6. Print the reversed list.
 
-## Program
+
+### Program:
 ```
-from queue import LifoQueue
-stack = LifoQueue(maxsize=7)
-n= int(input())
+def insertAtBottom(s, item):
+    if not s:
+        s.append(item)
+        return
+    top = s.pop()
+    insertAtBottom(s, item)
+    s.append(top)
+
+def reverseStack(s):
+ 
+    if not s:
+        return
+ 
+    item = s.pop()
+    reverseStack(s)
+ 
+    insertAtBottom(s, item)
+    return s
+l=[]
+n=int(input())
 for i in range(n):
-    stack.put(input())
-print(stack.full())
-for i in range(n):
-    print(stack.get())
+    l.append(int(input()))
+print(reverseStack(l))
 ```
 
 ## 🧪 Sample Input and Output
-<img width="541" height="468" alt="image" src="https://github.com/user-attachments/assets/52ef3dba-dc17-4ea3-a2b7-bc39250125f2" />
+<img width="513" height="277" alt="image" src="https://github.com/user-attachments/assets/f8ec8d8f-7a46-40b3-82ea-9cc0a087c2b4" />
 
-## Result:
+## Result
 Thus,the program is executed successfully
+
